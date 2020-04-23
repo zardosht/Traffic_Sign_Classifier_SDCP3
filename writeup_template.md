@@ -1,7 +1,7 @@
 #### Udacity Self-driving Car Nanodegree
 # Project 3: Traffic Sign Classification
 #### Using CNNs with Tensorflow 1.x
----
+
 
 
 **Build a Traffic Sign Recognition Project**
@@ -15,6 +15,16 @@ The goals / steps of this project are the following:
 * Analyze the softmax probabilities of the new images
 * Summarize the results with a written report
 
+[//]: # (Image References)
+
+[training_set_distribution]: ./writeup_images/training_set_distribution.png "Training Set Distribution"
+[example_sample]: ./writeup_images/example_sample.png "An example training image"
+[poor_sample]: ./writeup_images/poor_sample.png "A very dark sample"
+[test_images]: ./writeup_images/test_images.png "Images for manual test"
+[classification_results_on_test_images]: ./writeup_images/classification_results_on_test_images.png "Traffic Sign 2"
+[top5_probabilities]: ./writeup_images/top5_probabilities.png "Traffic Sign 3"
+[network_activations]: ./writeup_images/network_activations.png "Traffic Sign 4"
+[image8]: ./examples/placeholder.png
 
 
 ## Rubric Points
@@ -25,26 +35,44 @@ Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/4
 
 #### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
 
-You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
+You're reading it! and here is a link to my [project code](https://github.com/zardosht/udacity_selfdriving_car/blob/master/P3_Traffic_Sign_Classifier/P3_Traffic_Sign_Classifier.ipynb)
 
 ### Data Set Summary & Exploration
 
-#### 1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
-
-I used the pandas library to calculate summary statistics of the traffic
-signs data set:
-
-* The size of training set is ?
-* The size of the validation set is ?
-* The size of test set is ?
-* The shape of a traffic sign image is ?
-* The number of unique classes/labels in the data set is ?
+#### 1. Provide a basic summary of the data set. 
+```
+Number of training examples = 34799
+Number of validation examples = 4410
+Number of testing examples = 12630
+Image data shape = (32, 32, 3)
+Number of classes = 43
+```
 
 #### 2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+Following image shows a smaple image from the dataset. The images are of shape 32x32x3 RGB images with datatype `uint8` 
 
-![alt text][image1]
+![alt text][example_sample]{height=400px width=500px}
+
+There are 43 classes of German Traffic Signs. The dataset is not uniformly distributed over classes. For some classes there are more than 2000 sampels, whereas for some classes there are less than 200 samples. Follwing figure shows the distribution of samples over classes. 
+
+![alt text][training_set_distribution]
+
+Also the quality of sample images differs a lot. Some images have very good lighting, are clear and sharp, and occlussion free. Some samples are very dark, are partially occluded, have noise (like stickers attached on the sign). The following figure is an exmaple of a very dark sample, that is practically unrecognizable for human eye: 
+
+![alt text][poor_sample]
+
+**Summary of Insights on Data**
+
+* Dataset is sequential (all images of a class are after each other)
+* Images are 32x32x3 RGB, with dtype=np.uint8. 
+* Images are cropped to the traffic sign. No environment. 
+* The distribution of the training data is not uniform. With as few as about 180 images for classes like "0-Speed Limit (20 km/h)" or "19-Dangerous curve to the left", to around 2000 or more for classes like "3-Speed Limit (50 km/h)" or ""2-Speed Limit (30 km/h). 
+* Quality of some images are not good. For example the first 25 images for the class "19-Dangerous curve to the left" are almost black, with nothing recognizable with human eyes. 
+
+
+
+
 
 ### Design and Test a Model Architecture
 
