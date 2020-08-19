@@ -29,6 +29,7 @@ The goals / steps of this project are the following:
 
 
 ## Rubric Points
+The requirements to pass the project are listed [here](https://github.com/zardosht/Traffic_Sign_Classifier_SDCP3/blob/master/P3_Project_Rubric.pdf).
 Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
 ---
@@ -120,7 +121,7 @@ As said above, I started with LeNet. Becuase it is a simple model and I had alre
 I think the decision not to convert the input into gray scale was a good one. Becuase I got 94% validation set accuracy right at the first try (with 100 epochs, batch size 128, and learning rate 0.001). I tuned the training by reducing the epochs to half, adding dropout to the model, and doubling the batch size after 25 epochs.   
 Using these changes I achieved between 95.5 to 97 percent validation set accuracy in different training runs. 
 
-The test set accuracy in the model is 95%. 
+The test set accuracy in the model is 96%. 
  
 
 ### Test a Model on New Images
